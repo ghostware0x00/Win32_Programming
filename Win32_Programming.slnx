@@ -1,0 +1,14 @@
+<Solution>
+  <Configurations>
+    <Platform Name="x64" />
+    <Platform Name="x86" />
+  </Configurations>
+  <Folder Name="/Solution Items/">
+    <File Path="notes.md" />
+    <File Path="TODO" />
+    <File Path="Windows.md" />
+    <Project Path="Creating_Window/Creating_Window.vcxproj" />
+    <Project Path="Datatypes/Datatypes.vcxproj" />
+  </Folder>
+  <Project Path="Win32_Programming.vcxproj" Id="4747620d-0c64-465f-b590-fcd33fc81138" />
+</Solution>
