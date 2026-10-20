@@ -7,8 +7,8 @@
     <File Path="notes.md" />
     <File Path="TODO" />
     <File Path="Windows.md" />
-    <Project Path="Creating_Window/Creating_Window.vcxproj" />
-    <Project Path="Datatypes/Datatypes.vcxproj" />
+    <Project Path="Creating_Window/Creating_Window.vcxproj" Id="a146f944-8d72-4484-bca6-11501bc69433" />
+    <Project Path="Datatypes/Datatypes.vcxproj" Id="7b275d82-15c4-4b2d-a1e0-289a848e120a" />
   </Folder>
   <Project Path="Win32_Programming.vcxproj" Id="4747620d-0c64-465f-b590-fcd33fc81138" />
 </Solution>

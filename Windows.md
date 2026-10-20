@@ -25,4 +25,10 @@ int WINAPI wWinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, PWSTR pCmdLine
 ```
 
 - The `4` parameters are as follows :-
-	- `hInstance` 
+	- `hInstance` is the handle value the OS uses to identify the **handle** that is loaded into the memory. 
+	- `hPrevInstance` was used in 16-bit Windows, but is now always zero.
+	- `pCmdLine` contains the command line arguments as Unicode string.
+	- `nCmdShow` is a flag that indicates whether the main application is minimized, maximized, or shown normally.
+
+- The `WinMain` is the same as `wWinMain` but `WinMain` takes command line arguments as **ANSI string** whereas `wWinMain` takes as Unicode string so this is preferred over.
+
