@@ -1,10 +1,29 @@
-#undef UNICODE  // forces CreateFile() to accept char* ANSI strings. This needs to be included at the top of the file
+//#undef UNICODE  // forces CreateFile() to accept char* ANSI strings. This needs to be included at the top of the file
 #include <Windows.h>
 #include <iostream>
 #define BUFF_SIZE 256
 
 
-int main(int argc, char* argv[]){
+int main(int argc, LPTSTR argv[]){ 
+    /*
+        LPTSTR stands for Long Pointer TCHAR string
+        TCHAR is adaptive so if wchar_t (2bytes) and if char (1byte)
+        char* argv causes compile time error cause CreateFile() needs wchar_t* but we gave char*
+        but if we supply wchar_t* argv[] that violates the main() signature so we use LPTSTR because 
+
+        If Unicode is defined(Default in Modern Windows)
+        LPTSTR becomes wchar_t* everywhere
+        CreateFile becomes CreateFileW => both accept wide characters
+
+        If UNICODE is undefined(Legacy/ANSII)
+        LPTSTR becomes char* everywhere
+        CreateFile becomes CreateFileA => both accept narrow characters or (char) type data
+
+
+        In our code since UNICODE is undefined when we pass LPTSTR 
+        main() gets char* argv
+        and CreateFile() becomes CreateFileA() so it accepts narrow characters or (char) type data without any compile time errors
+    */
     CHAR buffer[BUFF_SIZE];
     // performing file copy 
     // there are 2 ways to do this
