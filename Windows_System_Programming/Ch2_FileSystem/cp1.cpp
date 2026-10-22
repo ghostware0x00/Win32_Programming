@@ -7,7 +7,7 @@
 int main(int argc, LPTSTR argv[]){ 
     /*
         LPTSTR stands for Long Pointer TCHAR string
-        TCHAR is adaptive so if wchar_t (2bytes) and if char (1byte)
+        TCHAR becomes wchar_t(UNICODE defined) and char(ANSI/UNICODE undefined).
         char* argv causes compile time error cause CreateFile() needs wchar_t* but we gave char*
         but if we supply wchar_t* argv[] that violates the main() signature so we use LPTSTR because 
 
