@@ -5,7 +5,7 @@
 #define BUFF_SIZE 256
 
 
-int _tmain(int argc, LPTSTR argv[]){ 
+int _tmain(int argc, LPTSTR argv[]){  // _tmain makes the main signature like int wmain(int argc, wchar_t* argv[]) thats why no compilation errors
     /*
         LPTSTR stands for Long Pointer TCHAR string
         TCHAR becomes wchar_t(UNICODE defined) and char(ANSI/UNICODE undefined).
