@@ -4,6 +4,7 @@
 
 // learn about boost library for command line argument parsing (C++)
 #include <Windows.h>
+#include <tchar.h>
 #include <iostream>
 #define BUFF_SIZE 256
 
@@ -14,7 +15,7 @@ int generate_key(){
 }
 
 
-int main(int argc, LPTSTR argv[]){
+int _tmain(int argc, LPTSTR argv[]){
     if(argc != 2){
         std::cout << "[!] usage: fe.exe filename" << std::endl;
         return 1;

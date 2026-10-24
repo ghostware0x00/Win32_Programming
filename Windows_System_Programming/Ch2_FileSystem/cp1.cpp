@@ -1,10 +1,11 @@
 //#undef UNICODE  // forces CreateFile() to accept char* ANSI strings. This needs to be included at the top of the file
 #include <Windows.h>
+#include <tchar.h> // for using _tmain()
 #include <iostream>
 #define BUFF_SIZE 256
 
 
-int main(int argc, LPTSTR argv[]){ 
+int _tmain(int argc, LPTSTR argv[]){ 
     /*
         LPTSTR stands for Long Pointer TCHAR string
         TCHAR becomes wchar_t(UNICODE defined) and char(ANSI/UNICODE undefined).
@@ -20,9 +21,12 @@ int main(int argc, LPTSTR argv[]){
         CreateFile becomes CreateFileA => both accept narrow characters or (char) type data
 
 
-        In our code since UNICODE is undefined when we pass LPTSTR 
-        main() gets char* argv
-        and CreateFile() becomes CreateFileA() so it accepts narrow characters or (char) type data without any compile time errors
+        In our code since UNICODE is defined so when we pass LPTSTR 
+        main() gets wchar_t* argv
+        and CreateFile() becomes CreateFileW() so it accepts wide string characters (wchar_t)
+        
+        For code portability so that based on whether unicode is declared or not
+        we use _tmain() so that based on the project environment our code adapts itself.
     */
     CHAR buffer[BUFF_SIZE];
     // performing file copy 

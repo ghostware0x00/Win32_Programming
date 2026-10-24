@@ -2,7 +2,7 @@
 #include <iostream>
 #define BUFF_SIZE 256
 
-int main(int argc, LPTSTR argv[]){
+int _tmain(int argc, LPTSTR argv[]){
     // implementing the "cat" command using Windows win32 programming
     if(argc != 2){
         std::cout << "[!] usage: cat.exe filename" << std::endl;

@@ -1,8 +1,9 @@
 // using CopyFile() instead of manually Creating, Reading, Writing on a file
 #include <Windows.h>
+#include <tchar.h>
 #include <iostream>
 
-int main(int argc, LPTSTR argv[]){
+int _tmain(int argc, LPTSTR argv[]){
     /*
         CopyFile() is used to copy an existing file on Windows Operating System to another file(destination file).
         arguments required by CopyFile() :-
