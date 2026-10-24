@@ -2,15 +2,10 @@
 // This will help was to rename or move a file to a new location.
 
 #include <Windows.h>
+#include <tchar.h>
 #include <iostream>
 
 int _tmain(int argc, LPTSTR argv[]){
-    #ifdef UNICODE
-        std::cout << "[i] The compiler is using UNICODE mode." << std::endl;
-    #else
-        std::cout << "[i] The compiler is using ANSI/ASCII mode." << std::endl;
-    #endif
-        return 0;
     if(argc != 3){
         std::cout << "[!] usage: mv.exe file1 file2" << std::endl;
         return 1;
