@@ -19,9 +19,9 @@ int _tmain(){
     • nBufferLength: The length of the buffer for the current directory string, in TCHARs. This must include room for a terminating null character.
     • lpBuffer: A pointer to the buffer that receives the current directory string. This null-terminated string specifies the absolute path to the current directory.
     */
-    DWORD bWrite;
+    DWORD bWrite = 0;
     TCHAR dirBuff[DIRNAME_LEN]; // buffer where the current directory string will be stored
-    HANDLE hOut = GetStdHandle(STD_OUTPUT_HANDLE); // based on the path ... that many characters are stored inside hOut handle. so for example (C:\Users) = 8 characters
+    HANDLE hOut = GetStdHandle(STD_OUTPUT_HANDLE); // based on the path ... that many number of characters are stored inside hOut handle. so for example (C:\Users) path has 8 characters so hOut = 8.
     if(hOut == INVALID_HANDLE_VALUE)
         return 1; // stdout handle not initialized
     DWORD pwd = GetCurrentDirectory(DIRNAME_LEN, dirBuff);
@@ -36,5 +36,7 @@ int _tmain(){
         so pwd = 8 and sizeof(TCHAR) = 2 and hence 8 x 2 = 16
     */
     WriteFile(hOut, dirBuff, pwd * sizeof(TCHAR), &bWrite, NULL);
+    TCHAR newline = _T('\n'); // here _T() is a macro which becomes _T(wchar_t) in Unicode and _T(ANSII) if Unicode not activated
+    WriteFile(hOut, &newline, 1 * sizeof(TCHAR), &bWrite, NULL); // adding newline to display the output a bit clearly
     return 0;
 }
