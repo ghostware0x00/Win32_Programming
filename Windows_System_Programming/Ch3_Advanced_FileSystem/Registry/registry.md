@@ -31,3 +31,9 @@
 
 - `HKEY_CUURENT_USER`:
     - contains user specific information, including environment variables, application preferences ... etc ...
+
+## DATATYPES
+
+### `HKEY`
+
+- is like a pointer which identifies a currently open key or predefined reserved key handle for (e.g., `HKEY_LOCAL_MACHINE`, `HKEY_CURRENT_USER`)
