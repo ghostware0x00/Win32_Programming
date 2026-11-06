@@ -157,3 +157,60 @@ macOS Internals & Security    Reverse Engineering & Triage    Detection & Teleme
 * Built automated detection routines scanning system LaunchAgents and LaunchDaemons against custom YARA rules targeting macOS backdoors.
 
 
+---
+
+## 📄 Role 3: Detection Engineer / Malware Researcher (ML-Assisted Detection)
+
+### Position Summary & Context
+- **Target Company:** OPSWAT (Critical Infrastructure Protection)
+- **Required Experience:** 3+ years in Malware Analysis, Threat Research, or Detection Engineering (BS in CS/InfoSec or equivalent hands-on experience)
+- **Key Focus:** Improving Machine Learning detection engines, root-causing false positives/misses down to ML features/labels, adversarial testing, and dataset curation.
+- **Core Toolset:** YARA, IDA Pro, Ghidra, radare2, `pefile`, `LIEF`, Python automation, Sandboxes, Static/Dynamic Analysis.
+
+---
+
+### Core Skill Architecture & Breakdown
+
+#### 1. ML Detection Engine Optimization & Gap Analysis
+- **Root-Cause Triage:** Analyzing detection misses and false positives down to specific failing features, inaccurate labels, or dataset imbalance within machine learning models.
+- **Adversary Emulation & Stress Testing:** Performing intentional evasion attacks (packing, string obfuscation, polymorphism, PE format abuse, section manipulation) against internal ML detectors to evaluate robustness.
+- **Feature Proposal & Validation:** Engineering and validating raw binary features, structural PE attributes, byte entropy distributions, and behavioral YARA rules to feed into model pipelines.
+
+#### 2. Cross-Platform Static & Dynamic Triage
+- **Deep Static Analysis:** Inspecting PE binaries (Windows), ELF (Linux), and Mach-O (macOS) structures using tools like `pefile`, `LIEF`, **radare2**, **Ghidra**, and **IDA Pro**.
+- **Packing & Obfuscation Detection:** Identifying indicators of custom packers, protectors (UPX, Themida, VMProtect), and runtime payload extraction methods.
+- **Sandbox-Driven Validation:** Running dynamic triage routines to record operational behavior, API execution patterns, and dropping artifacts.
+
+#### 3. Dataset Curation, Labeling & Governance
+- **Data Quality Control:** Curating and verifying training/evaluation datasets by ensuring clean provenance, accurate family tagging, and balanced representation across malware strains.
+- **Prevalence & Risk Prioritization:** Translating identified detection gaps into prioritized feature/engineering plans for the ML team based on threat prevalence, severity, and FP impact.
+- **Pre-Release Model Validation:** Rigorously validating updated detection models before release and auditing performance metrics for data leakage or false high performance.
+
+---
+
+### Recommended Portfolio Projects to Build
+
+#### Project 1: Adversarial Binary Obfuscator & ML Detection Tester
+- **Objective:** A Python utility that mutates benign and malicious PE binaries (section renaming, entropy manipulation, overlay padding) to test detection robustness against ML models and YARA rules.
+- **Tech Stack:** Python, `pefile`, `LIEF`, YARA.
+- **Key Features:**
+  * Modifies PE header parameters and introduces harmless code shifts without breaking execution integrity.
+  * Evaluates detection delta by comparing static feature profiles before and after transformation.
+  * Generates benchmark reports showing feature vulnerability vectors.
+
+#### Project 2: PE Feature Extractor & Dataset Curation Pipeline
+- **Objective:** Build an automated feature extraction tool using `pefile` and `LIEF` to parse binary datasets and flag high-risk structural anomalies for ML model training.
+- **Tech Stack:** Python, `pefile`, `LIEF`, Pandas, Scikit-learn.
+- **Key Features:**
+  * Extracts section entropy, import/export tables, rich header hashes, and anomalous section names across binary sample sets.
+  * Performs automatic data cleaning, provenance verification, and duplicate filtering to generate balanced feature arrays.
+  * Outputs ML-ready CSV/JSON datasets alongside dataset health diagnostics.
+
+---
+
+
+## IMPORTANT POINTS
+
+- build a project
+- post in linkedin
+- write an article about it in medium explaining the workflow and analysis

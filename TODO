@@ -1,5 +1,19 @@
 
-C/C++ Win32 API tutorials | Windows GUI programming "windows.h"
-The Pentamollis Project 
+## CHAPTERS TO FOCUS ON WINDOWS SYSTEMS PROGRAMMING BOOK
 
-complete the playlist and study win32api using microsoft win32api documentation
+```
+Phase 1: Memory & PE Architecture
+   └── Chapter 5: Memory Management, Memory-Mapped Files, and DLLs
+
+Phase 2: Execution & Injection Fundamentals
+   ├── Chapter 6: Process Management
+   └── Chapter 7: Threads and Scheduling
+
+Phase 3: Persistence & Evasion Mechanics
+   ├── Chapter 3: Registry & File Processing
+   ├── Chapter 13: Windows Services
+   └── Chapter 4: Exception Handling (SEH/VEH)
+
+Phase 4: Privileges & Security Contexts
+   └── Chapter 15: Securing Windows Objects
+```
