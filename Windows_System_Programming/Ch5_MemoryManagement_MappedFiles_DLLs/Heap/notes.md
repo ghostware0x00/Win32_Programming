@@ -131,12 +131,12 @@ When this happens, the operating system has to work extra hard to rearrange thin
 
 # Kernel File Object
 
-- The kernel file object is a low level OS construct that links the contents of the file directly to the process's virtual address space. 
+- A kernel file object (often referred to in operating systems like Windows or Linux) is a data structure maintained inside the kernel's address space that represents an open file, device, pipe, or directory
 
 
 ## 4. CreateFileMapping()
 
-- `CreateFileMapping()` creates a **kernel file mapping object object** which has a **handle**, on an open file and then map all or part of the file to the process's virtual address space. File object can be named so that they can be accessed by other processes. 
+- `CreateFileMapping()` creates a **kernel file mapping object** which has a **handle**, on an open file and then map all or part of the file to the process's virtual address space. File object can be named so that they can be accessed by other processes. 
 
 - mapping of a file means creating a direct link of the file but `CreateFileMapping()` doesn't build the link yet. It only builds the blueprint saying this file will be linked and creates the **kernel file mapping object**.
 
@@ -233,4 +233,7 @@ LPVOID MapViewOfFile(
 * **Success**: The starting memory address (`LPVOID`) of the mapped view.
 * **Failure**: `NULL` (call `GetLastError()` for extended error info).
 
+## SUMMARY
 
+- You want a direct link to a file? create a kernel file object (done by `CreateFileMapping()`)
+- Now to link the kernel file object to the process memory ? (done by `MapViewOfFile()`)
