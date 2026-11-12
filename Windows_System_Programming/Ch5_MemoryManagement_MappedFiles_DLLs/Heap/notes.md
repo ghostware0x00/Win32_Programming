@@ -121,3 +121,32 @@ When this happens, the operating system has to work extra hard to rearrange thin
 - You don't need a private heap for everyday tasks. However, creating your own isolated private heap is incredibly useful in two specific scenarios:
     - Massive amounts of small allocations: If you are building something like a game or a compiler that creates and destroys millions of tiny nodes (like a linked list or tree), keeping them in a private heap stops them from cluttering up the default "parking lot."
     - Instant, lightning-fast cleanup: If you allocate 10,000 items inside a private heap for a temporary task, you don't have to spend time freeing all 10,000 items individually. You just call HeapDestroy(hPrivateHeap) and the entire "parking lot" vanishes instantly.
+
+---
+
+# Memory Mapped Files
+
+- As we talked earlier about memory mapped files being an os mechanism that links a portion of the disk directly to a process's virtual address space. So memory mapped file is the HIGH LEVEL CONCEPT.
+
+
+## 4. CreateFileMapping()
+
+- `CreateFileMapping()` creates a **mapping object** to that file(the OS level link) to that file, not the process virtual space linking yet...
+
+- To summup `CreateFileMapping()` creates a handle to that file, a mapping object without reading or linking the data yet. The OS kernel object does the underlying work.
+
+### Arguments required by CreateFileMapping()
+
+```c
+HANDLE CreateFileMapping(
+  HANDLE                hFile,
+  LPSECURITY_ATTRIBUTES lpFileMappingAttributes,
+  DWORD                 flProtect,
+  DWORD                 dwMaximumSizeHigh,
+  DWORD                 dwMaximumSizeLow,
+  LPCTSTR               lpName
+);
+```
+
+
+
