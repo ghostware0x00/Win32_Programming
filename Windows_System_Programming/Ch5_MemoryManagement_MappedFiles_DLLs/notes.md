@@ -39,6 +39,16 @@
 - DLLs stands for Dynamic Linked Library
 - Not executable directly unlike `.exe` we double click and execute.
 - These DLLs are shared by multiple processes having same code so instead of creating multiple copies of the same code and consuming disk space, these DLLs are created so that multiple processes can share them.
+- Library functions are not linked at build time. Rather then are linked at program loading time. 
+  - implicit linking
+  - explicit linking 
+- DLLs can be used to create **shared libraries** i.e. multiple programs sharing the same library in the form of DLL and only a single copy gets loaded into the memory.
+- **Implicit Linking** 
+  - the process's build process constructs a `.lib` library file, which us the **stub** for the actual code and is linked to the calling program at loading/build time.
+  - the `.lib` is basically the **stub** which contains code that loads the `.DLL` file at load time. The `.DLL` file contains the actual executable code of the library functions you used in your program. 
+- **Explicit Linking**
+  - requires the program to request specifically that a DLL be loaded or freed.
+  - you explicitly reference the function of that DLL by using a pointer without writing the function definition so there is no need to for a `.lib` file 
 - Advantages:
     - memory effificent:
         - not wasting disk space to create multiple redundant copies of the same code. one common point of access.
@@ -46,7 +56,8 @@
         - the DLL is reused by multiple processes having the same checks or operations required to perform.
     - easier updates: 
         - only update that DLL code part instead of updating each and every program
-            
+
+    
 
 ## ADVANTAGES OF MEMORY MAPPED FILES OVER STANDARD I/O
 
