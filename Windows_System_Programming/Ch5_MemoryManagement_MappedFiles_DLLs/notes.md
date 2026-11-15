@@ -248,8 +248,38 @@ HMODULE LoadLibraryExW(
 
 - **`lpLibFileName` (`Required`)**: The name or full file path of the .dll or .exe module. Use a standard string literal ("example.dll") for LoadLibraryA or a wide string literal (L"example.dll") for LoadLibraryW.
 
--  hFile (Required in LoadLibraryEx): Reserved for future Windows use. You must pass NULL.
-• dwFlags (Required in LoadLibraryEx): Controls how Windows searches for and maps the module into memory. Pass 0 for standard behavior, or combine flags like LOAD_LIBRARY_SEARCH_APPLICATION_DIR for safer path resolution
+- **` hFile (Required in LoadLibraryEx)`**: Reserved for future Windows use. You must pass NULL.
+
+- **`dwFlags (Required in LoadLibraryEx)`**: Controls how Windows searches for and maps the module into memory. Pass 0 for standard behavior, or combine flags like LOAD_LIBRARY_SEARCH_APPLICATION_DIR for safer path resolution
+
+
+
+## GetProcAddress()
+
+- retrieves the exact starting address of that specific exported function's machine code in your program's virtual memory.
+- exported functions are the functions that are allowed to be called by outside processes/programs inside the `.DLL`
+
+
+## Arguments
+
+```c
+FARPROC GetProcAddress(
+  [in] HMODULE hModule,
+  [in] LPCSTR  lpProcName
+);
+```
+
+- **`hModule (HMODULE)`** 
+  - A handle to the DLL module that contains the target function or variable. You obtain this handle from functions like LoadLibrary, LoadLibraryEx, or GetModuleHandle. Modules loaded with the LOAD_LIBRARY_AS_DATAFILE flag cannot be used with this function.
+
+- **`lpProcName (LPCSTR)`** 
+  - A null-terminated ANSI string specifying the exact, case-sensitive name of the exported function or variable. Alternatively, you can pass the function's export ordinal value in the low-order word while keeping the high-order word set to zero (using the MAKEINTRESOURCEA macro).
+
+
+## Return Values
+
+- **`Return Value (FARPROC)`**
+  - If the function succeeds, it returns the address of the exported function or variable. If it fails, it returns NULL, and you can call GetLastError for extended error details
 
 
 ## FreeLibrary()
@@ -257,3 +287,17 @@ HMODULE LoadLibraryExW(
 - unloads the loaded `.DLL` file from the current process.
   - Theres a counter which maintains the reference count(load count) tracked by the windows os loader of that specific DLL in your process. When we load it, the counter increments and decrements when unloaded.
   - This counter is used to make sure when multiple programs/processes are using the same `.DLL`, the counter doesn't just finish when one process has done its use and waits until all the processes have done using that `.DLL` and then free or unload it. This is to prevent accidental crashes.
+
+## Arguments
+
+```c
+BOOL FreeLibrary(
+  [in] HMODULE hLibModule
+);
+```
+
+
+- **`hLibModule (HMODULE)`**. This is a handle to the loaded library module. You obtain this handle from a prior call to LoadLibrary, LoadLibraryEx, GetModuleHandle, or GetModuleHandleEx.
+
+## Return Values
+- **`Return Value (BOOL)`**. The function returns a nonzero value (TRUE) if it succeeds, or zero (FALSE) if it fails. Call GetLastError to retrieve extended error information on failure.
