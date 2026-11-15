@@ -218,3 +218,42 @@ BOOL UnmapViewOfFile(
 | `CreateFileMapping` | Creates a named or unnamed file mapping kernel object. It defines the maximum size and page protection (read/write) for a disk file or system pagefile. | A `HANDLE` to the file mapping object. |
 | `OpenFileMapping` | Allows a secondary process to access an existing named file mapping object created by another process for IPC. | A `HANDLE` to the existing file mapping object. |
 | `MapViewOfFile` | Reserves a region of the calling process's virtual address space and links it to all or part of the file mapping object. | A void pointer (`LPVOID`) to the starting memory address. |
+
+
+## DLLs
+
+## Explicit Linking
+
+## LoadLibrary()
+
+- loads the library you mention by including its filename/path of the module as the argument.
+
+## Arguments
+
+```c
+// Standard LoadLibrary (1 required argument)
+HMODULE LoadLibraryW(
+    LPCWSTR lpLibFileName  // [in] Null-terminated Unicode string (const wchar_t*)
+);
+
+// Extended LoadLibraryEx (3 required arguments)
+HMODULE LoadLibraryExW(
+    LPCWSTR lpLibFileName, // [in] Null-terminated Unicode string (const wchar_t*)
+    HANDLE  hFile,         // [in] Reserved; must always be NULL
+    DWORD   dwFlags        // [in] Action flags (e.g., 0, LOAD_LIBRARY_SEARCH_SYSTEM32)
+);
+
+```
+- **`LpLibFileName` (`LPCTSTR`)**: The name or full file path of the .dll or .exe module. Use a standard string literal ("example.dll") for LoadLibraryA or a wide string literal (L"example.dll") for LoadLibraryW
+
+- **`lpLibFileName` (`Required`)**: The name or full file path of the .dll or .exe module. Use a standard string literal ("example.dll") for LoadLibraryA or a wide string literal (L"example.dll") for LoadLibraryW.
+
+-  hFile (Required in LoadLibraryEx): Reserved for future Windows use. You must pass NULL.
+• dwFlags (Required in LoadLibraryEx): Controls how Windows searches for and maps the module into memory. Pass 0 for standard behavior, or combine flags like LOAD_LIBRARY_SEARCH_APPLICATION_DIR for safer path resolution
+
+
+## FreeLibrary()
+
+- unloads the loaded `.DLL` file from the current process.
+  - Theres a counter which maintains the reference count(load count) tracked by the windows os loader of that specific DLL in your process. When we load it, the counter increments and decrements when unloaded.
+  - This counter is used to make sure when multiple programs/processes are using the same `.DLL`, the counter doesn't just finish when one process has done its use and waits until all the processes have done using that `.DLL` and then free or unload it. This is to prevent accidental crashes.
