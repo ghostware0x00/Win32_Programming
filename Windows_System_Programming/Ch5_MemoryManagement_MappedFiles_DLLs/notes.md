@@ -252,6 +252,10 @@ HMODULE LoadLibraryExW(
 
 - **`dwFlags (Required in LoadLibraryEx)`**: Controls how Windows searches for and maps the module into memory. Pass 0 for standard behavior, or combine flags like LOAD_LIBRARY_SEARCH_APPLICATION_DIR for safer path resolution
 
+## Return Values
+
+- **`Success`** : NOT NULL
+- **`Fail`** : NULL
 
 
 ## GetProcAddress()
