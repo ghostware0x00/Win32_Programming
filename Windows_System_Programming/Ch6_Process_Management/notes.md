@@ -12,15 +12,36 @@
 - TLS stands for Thread Local Storage.
 - Its an array like collection of pointers giving each thread the ability to allocate storage to create its own unique data environment.
 
-![Process and Its Threads](image.png)
-
+![Process and Its Threads](./Images/image.png)
 
 ## Process Handle Tables
 
 - a data structure maintained by the OS for each individual process to keep track of what system resources are allocated to these processes like (open files, registry keys, threads ... etc ...)
 
+![Process Handle Tables](./Images/image-1.png)
 
 # Windows Process Management API
+
+## GetCurrentProcess()
+
+- Retrieves the handle of the current process
+- The main purpose is to use this handle to inspect, configure or make any operations we want to perform on the current process.
+
+```c
+HANDLE GetCurrentProcess(VOID)
+```
+## Return Values
+
+- If handle fails then returns `INVALID_HANDLE_VALUE` 
+
+
+## GetCurrentProcessId()
+
+- Gives the current process's ID.
+
+```c
+DWORD GetCurrentProcessId();
+```
 
 ## CreateProcess()
 
