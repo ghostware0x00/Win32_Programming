@@ -20,6 +20,14 @@
 
 ![Process Handle Tables](./Images/image-1.png)
 
+
+## Inheritable Handles
+
+- This talks about what happens when a child inherits the handle of the parent process.
+- The child gains access to :-
+  - same access rights to the files, open pipes are transferred to the processes and any changes made by the child process would also be reflected for the parent process.
+
+
 # Windows Process Management API
 
 ## GetCurrentProcess()
