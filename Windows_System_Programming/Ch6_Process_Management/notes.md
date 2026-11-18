@@ -75,6 +75,7 @@ BOOL CreateProcessW(
 
 - pauses the execution of the calling thread until a specified kernel object becomes signaled or a set time-out interval elapses. 
 - This mainly used for synchronization purposes because when we create a process, that process runs asynchronously so both the calling process and the newly created process run solo ... so lets say one process is dependent on the other one so we use this function to synchronize them and use p2 to write to p1 and then read it from there (just an example).
+- understand this that after the timer goes out, the process doesn't terminate, for that we need to explicitly call TerminateProcess().
 
 ```c
 DWORD WaitForSingleObject(
