@@ -67,6 +67,10 @@ HANDLE OpenProcess(
 );
 ```
 - **`DWORD dwDesiredAccess`**: defines the exact permissions we want of the target process. These are rights that the new handle we get from the OpenProcess() can use, nothing more.
+  - `PROCESS_TERMINATE`	Force-close the target process using TerminateProcess.
+  - `PROCESS_VM_READ`	Read the target process's virtual memory using ReadProcessMemory.
+  - `PROCESS_VM_WRITE`	Write to the target process's virtual memory using WriteProcessMemory.
+
 - **`BOOL bInheritHANDLE`**: OpenProcess() creates a handle of an exisiting process so here the **bInheritable** denotes the access rights of the child process from the handle we get using OpenProcess()
 - **`DWORD dwDesiredAccess`**: The process's PID
 
@@ -152,3 +156,17 @@ DWORD WaitForSingleObject(
 - **`WAIT_ABANDONED (0x00000080)`**: Mutex was abandoned by its owning thread.
 
 - **`WAIT_FAILED`**: Function failed due to an invalid handle or error
+
+## TerminateProcess()
+
+- Used to terminate the process using the process's handle.
+
+## Arguments
+
+```c
+BOOL TerminateProcess(HANDLE hProcess, UINT uExitCode);
+```
+
+- **`HANDLE hProcess`**: The process's handle we want to terminate.
+- **`UINT ExitCode`**: The exit status code returned when the process terminates.
+
