@@ -51,6 +51,30 @@ HANDLE GetCurrentProcess(VOID)
 DWORD GetCurrentProcessId();
 ```
 
+## OpenProcess()
+
+- Opens a handle to an existing process using the process's PID.
+- By opening the handle of another process we can control it, monitor it ... etc ...
+
+
+## Arguments
+
+```c
+HANDLE OpenProcess(
+  [in] DWORD dwDesiredAccess,
+  [in] BOOL  bInheritHandle,
+  [in] DWORD dwProcessId
+);
+```
+- **`DWORD dwDesiredAccess`**: defines the exact permissions we want of the target process. These are rights that the new handle we get from the OpenProcess() can use, nothing more.
+- **`BOOL bInheritHANDLE`**: OpenProcess() creates a handle of an exisiting process so here the **bInheritable** denotes the access rights of the child process from the handle we get using OpenProcess()
+- **`DWORD dwDesiredAccess`**: The process's PID
+
+## Return Values
+
+- If fails then `INVALID_HANDLE_VALUE`
+
+
 ## CreateProcess()
 
 - launches the application/program/process and creates the primary thread i.e. point to the entry point of the program (such as main, wmain or tmain)
